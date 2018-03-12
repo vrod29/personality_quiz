@@ -43,6 +43,12 @@
             <div class="form-check mb-3">
               <input class="form-check-input" type="radio" name="exampleRadios"id="exampleRadios1" value="option1" checked>
               <label class="form-check-label" for="exampleRadios1">
+                Keep to yourself
+              </label>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="radio" name="exampleRadios"id="exampleRadios1" value="option1" checked>
+              <label class="form-check-label" for="exampleRadios1">
                 Helps others in need
               </label>
             </div>
