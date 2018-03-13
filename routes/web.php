@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('question', function () {
     return view('question');
 });
+
+Route::post(, );
