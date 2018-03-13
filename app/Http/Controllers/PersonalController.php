@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Participant;
 use App\Question;
 use App\Answer;
+use App\Response;
 
 
 class PersonalController extends Controller
@@ -19,6 +20,11 @@ class PersonalController extends Controller
   }
 
   public function question($id){
+
+    // if an answer was selected, record that
+
+
+
     $question = Question::find($id);
     $answerChoices = Answer::where('question_id', '=', $id)->get();
 

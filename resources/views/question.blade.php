@@ -6,9 +6,6 @@
 
 @section('content')
 
-<?php dump($answerChoices)?>
-
-
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-">
@@ -27,13 +24,14 @@
             @endforeach
           </div>
         </div>
-          <button class="btn btn-primary btn-lg ml-5" type="button" name="button">Next</button>
+          <a href="question/{{$question->id+1}}">
+            <button class="btn btn-primary btn-lg ml-5" type="button" name="button">Next</button>
+          </a>
         </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 @endsection
