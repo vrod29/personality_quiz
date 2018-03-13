@@ -6,12 +6,14 @@
 
 @section('content')
 
+<?php dump($answerChoices->answerChoices); ?>
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-">
       <div class="card mt-5">
         <div class="card-body">
-          <h3 class="card-title display-4 text-center">How do you describe yourself?</h3>
+          <h3 class="card-title display-4 text-center">{{$question->question}}</h3>
         <div class="row pl-5">
           <div class="col">
             <div class="form-check mb-2">
