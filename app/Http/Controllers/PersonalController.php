@@ -19,21 +19,27 @@ class PersonalController extends Controller
     return redirect('question/1');
   }
 
-  public function question($id){
+  public function question(Request $request){
+    $newResponse = new Response;
+    $newResponse->question_id = $request->question_id;
+    $newResponse->user_id = $request->participant_id;
+    $newResponse->answer_id = $request->picked_answer;
+    $newResponse->save();
+
+    $nextQuestion = $request->question_id+1;
 
     // if an answer was selected, record that
-
-
-
-    $question = Question::find($id);
-    $answerChoices = Answer::where('question_id', '=', $id)->get();
+    $participant = Participant::orderBy('id', 'DESC')->first();
+    $question = Question::find($nextQuestion);
+    $answerChoices = Answer::where('question_id', '=', $nextQuestion)->get();
 
     $data = [
       'question' => $question,
       'answerChoices' => $answerChoices,
+      'participant' => $participant
     ];
 
-    return view ('question')->with($data);
+    return view('question')->with($data);
 
   }
 }

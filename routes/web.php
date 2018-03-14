@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('question/{id}','PersonalController@question');
+Route::get('/question/{id}','PersonalController@question');
 
-Route::post('start_quiz', 'PersonalController@start_quiz');
+Route::post('/start_quiz', 'PersonalController@start_quiz');
+
+Route::post('/post_answer', 'PersonalController@question');
