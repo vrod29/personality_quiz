@@ -7,6 +7,7 @@ use App\Participant;
 use App\Question;
 use App\Answer;
 use App\Response;
+use Log;
 
 
 class PersonalController extends Controller
@@ -20,28 +21,40 @@ class PersonalController extends Controller
   }
 
   public function question(Request $request){
-    $newResponse = new Response;
-    $newResponse->question_id = $request->question_id;
-    $newResponse->user_id = $request->participant_id;
-    $newResponse->answer_id = $request->picked_answer;
-    $newResponse->save();
 
-    $nextQuestion = $request->question_id+1;
+    if (!empty($request->picked_answer)){
+      $newResponse = new Response;
+      $newResponse->question_id = $request->question_id;
+      $newResponse->user_id = $request->participant_id;
+      $newResponse->answer_id = $request->picked_answer;
+      $newResponse->save();
+    }
 
+    if ($request->question_id == 10) {
+      // do ending logic
+      $animal = self::calculate($request->participant_id);
+      $data = [
+        'animal' => $animal
+      ];
+      return view('result')->with($data);
 
+    } else {
+      $nextQuestion = $request->question_id+1;
 
-    // if an answer was selected, record that
-    $participant = Participant::orderBy('id', 'DESC')->first();
-    $question = Question::find($nextQuestion);
-    $answerChoices = Answer::where('question_id', '=', $nextQuestion)->get();
+      // if an answer was selected, record that
+      $participant = Participant::orderBy('id', 'DESC')->first();
+      $question = Question::find($nextQuestion);
+      $answerChoices = Answer::where('question_id', '=', $nextQuestion)->get();
 
-    $data = [
-      'question' => $question,
-      'answerChoices' => $answerChoices,
-      'participant' => $participant
-    ];
+      $data = [
+        'question' => $question,
+        'answerChoices' => $answerChoices,
+        'participant' => $participant
+      ];
 
-    return view('question')->with($data);
+      return view('question')->with($data);
+
+    }
 
   }
 
@@ -52,13 +65,31 @@ class PersonalController extends Controller
 
     foreach ($answerResults as $result) {
       $answerTotal += $result->answer->answer_value;
+
     }
+    $animal = '';
 
-    // based on # of points - determine what animal is shown based on point range
+    if ($answerTotal > 1 && $answerTotal < 10) {
+        $animal = 'cat';
 
-    // display result on results page with images
+    } else if ($answerTotal >10 && $answerTotal < 20) {
+        $animal = 'dog';
+    } else if ($answerTotal >20 && $answerTotal < 30) {
+        $animal = 'peacock';
+      }
+      else if ($answerTotal >30 && $answerTotal < 40) {
+        $animal = 'racoon';
+      }
+      else if ($answerTotal >40 && $answerTotal < 50) {
+        $animal = 'bear';
+      }
+      else if ($answerTotal >50 && $answerTotal < 60) {
+        $animal = 'lion';
+      }
 
-    // set reset button to index view
+      Log::debug('ANSWER TOTAL');
+      Log::debug($answerTotal);
 
+      return $animal;
+    }
   }
-}

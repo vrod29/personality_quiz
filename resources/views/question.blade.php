@@ -8,6 +8,8 @@
       <div class="card mt-5">
         <div class="card-body">
           <h3 class="card-title display-4 text-center">{{$question->question}}</h3>
+            <h5 class="text-center">Choose One Answer</h5>
+            <hr>
           <form class="" action="/post_answer" method="post">
             <div class="row pl-5">
               @csrf
