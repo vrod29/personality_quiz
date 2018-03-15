@@ -10,6 +10,11 @@
             <h3 class="card-title display-4">CONGRATULATIONS!</h3>
             <p class="card-text">BASED ON YOUR ANSWERS, WE HAVE DETERMINED THAT YOUR SPIRIT ANIMAL IS........</p>
             <img class="result_pic mb-2" src="/images/bear.jpg"  width="300px" height="350px;"alt="">
+            <div class="row">
+              <div class="col text-center">
+                <button class="btn btn-success btn-lg" type="reset" name="button">Close</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -28,6 +28,8 @@ class PersonalController extends Controller
 
     $nextQuestion = $request->question_id+1;
 
+
+
     // if an answer was selected, record that
     $participant = Participant::orderBy('id', 'DESC')->first();
     $question = Question::find($nextQuestion);
@@ -40,6 +42,23 @@ class PersonalController extends Controller
     ];
 
     return view('question')->with($data);
+
+  }
+
+  public function calculate($userId){
+    $answerResults = Response::where('user_id', '=', $userId)->get();
+    // calculate points based on answer $answerChoices
+    $answerTotal = 0;
+
+    foreach ($answerResults as $result) {
+      $answerTotal += $result->answer->answer_value;
+    }
+
+    // based on # of points - determine what animal is shown based on point range
+
+    // display result on results page with images
+
+    // set reset button to index view
 
   }
 }
