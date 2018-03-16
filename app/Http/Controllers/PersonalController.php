@@ -41,7 +41,6 @@ class PersonalController extends Controller
     } else {
       $nextQuestion = $request->question_id+1;
 
-      // if an answer was selected, record that
       $participant = Participant::orderBy('id', 'DESC')->first();
       $question = Question::find($nextQuestion);
       $answerChoices = Answer::where('question_id', '=', $nextQuestion)->get();
@@ -76,16 +75,13 @@ class PersonalController extends Controller
         $animal = 'dog';
     } else if ($answerTotal >20 && $answerTotal <= 30) {
         $animal = 'peacock';
-      }
-      else if ($answerTotal >30 && $answerTotal <= 40) {
+    } else if ($answerTotal >30 && $answerTotal <= 40) {
         $animal = 'racoon';
-      }
-      else if ($answerTotal >40 && $answerTotal <= 50) {
+    } else if ($answerTotal >40 && $answerTotal <= 50) {
         $animal = 'bear';
-      }
-      else if ($answerTotal >50 && $answerTotal <= 60) {
+    } else if ($answerTotal >50 && $answerTotal <= 60) {
         $animal = 'lion';
-      }
+    }
 
       Log::debug('ANSWER TOTAL');
       Log::debug($answerTotal);
