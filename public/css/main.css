@@ -6,3 +6,7 @@ body {
 .container {
   margin-top: 75px;
 }
+
+.btn {
+  float: right;
+}

@@ -69,21 +69,21 @@ class PersonalController extends Controller
     }
     $animal = '';
 
-    if ($answerTotal > 1 && $answerTotal < 10) {
+    if ($answerTotal > 1 && $answerTotal <= 10) {
         $animal = 'cat';
 
-    } else if ($answerTotal >10 && $answerTotal < 20) {
+    } else if ($answerTotal >10 && $answerTotal <= 20) {
         $animal = 'dog';
-    } else if ($answerTotal >20 && $answerTotal < 30) {
+    } else if ($answerTotal >20 && $answerTotal <= 30) {
         $animal = 'peacock';
       }
-      else if ($answerTotal >30 && $answerTotal < 40) {
+      else if ($answerTotal >30 && $answerTotal <= 40) {
         $animal = 'racoon';
       }
-      else if ($answerTotal >40 && $answerTotal < 50) {
+      else if ($answerTotal >40 && $answerTotal <= 50) {
         $animal = 'bear';
       }
-      else if ($answerTotal >50 && $answerTotal < 60) {
+      else if ($answerTotal >50 && $answerTotal <= 60) {
         $animal = 'lion';
       }
 

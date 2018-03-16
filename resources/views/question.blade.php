@@ -7,6 +7,7 @@
     <div class="col-">
       <div class="card mt-5">
         <div class="card-body">
+          <h5 class="text-center">{{ $question->id }} of 10</h5>
           <h3 class="card-title display-4 text-center">{{$question->question}}</h3>
             <h5 class="text-center">Choose One Answer</h5>
             <hr>
@@ -33,7 +34,7 @@
               <input type="hidden" name="participant_id" value="{{ $participant->id }}" />
               <input type="hidden" name="question_id" value="{{ $question->id }}">
             </div>
-            <button class="btn btn-primary btn-lg ml-5" type="submit" name="button">Next</button>
+            <button class="btn btn-primary btn-lg" type="submit" name="button">Next</button>
           </form>
         </div>
       </div>
